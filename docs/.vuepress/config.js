@@ -1,16 +1,19 @@
 module.exports = {
   // 博客名
-  title: "Narrow road meet, code revere win.",
+  title: "FUTURE ◆ 未来",
   // 博客描述
-  description: "码,需清心寡欲",
+  description: "坚持比努力更可怕",
   head: [
-    ['link', { rel: 'icon', href: '/ikangxu.jpg' }]
+    ['link', {
+      rel: 'icon',
+      href: '/dou.jpg'
+    }]
   ],
   theme: require.resolve("../../theme/"),
   themeConfig: {
     // 设置logo
-    logo: "/ikangxu.jpg",
-    author: "IKangXu",
+    logo: "/dou.jpg",
+    author: "weiei",
     searchMaxSuggestions: 20,
     repo: "IKangXu/vuepress-theme-ic",
     docsDir: "docs",
@@ -19,11 +22,24 @@ module.exports = {
     lastUpdated: "Last Updated",
     navs: [
       // 默认为左侧底部设计
-      { text: "关于", link: "/notes/about", blank: false },
-      { text: "友链", link: "/notes/friendLink", blank: false },
-      { text: "RSS", link: "http://ikangxu.cn/rss.xml", blank: true }
+      {
+        text: "关于",
+        link: "/notes/about",
+        blank: false
+      },
+      {
+        text: "友链",
+        link: "/notes/friendLink",
+        blank: false
+      },
+      {
+        text: "RSS",
+        link: "http://ikangxu.cn/rss.xml",
+        blank: true
+      }
     ],
     noteConfig: {
+      // 背景图片
       bg: "/bg.jpg",
       // 来创建左侧菜单
       nav: [
@@ -41,7 +57,9 @@ module.exports = {
         {
           text: "语言",
           icon: "",
-          frontmatter: { id: "language" }, // 通过这种方式进行分组设置
+          frontmatter: {
+            id: "language"
+          }, // 通过这种方式进行分组设置
           open: true,
           items: [
             {
@@ -62,26 +80,69 @@ module.exports = {
               ]
             },
             {
-              text: "JavaScript",
+              text: "HTML",
               icon: "",
-              frontmatter: { key: "JavaScript" },
+              frontmatter: {
+                key: "HTML"
+              },
               items: [
                 {
+                  text: "标签",
+                  icon: "",
+                  frontmatter: {
+                    key: "标签"
+                  }
+                }
+              ]
+            },
+            {
+              text: "JavaScript",
+              icon: "",
+              frontmatter: {
+                key: "JavaScript"
+              },
+              items: [{
                   text: "ECMAScript6",
                   icon: "",
-                  frontmatter: { key: "ECMAScript6" }
+                  frontmatter: {
+                    key: "ECMAScript6"
+                  }
+                },
+                {
+                  text: "Three.js",
+                  icon: "",
+                  frontmatter: {
+                    key: "Three"
+                  }
                 },
                 {
                   text: "Vue",
                   icon: "",
-                  frontmatter: { key: "Vue" }
+                  frontmatter: {
+                    key: "Vue"
+                  }
                 },
                 {
                   text: "React",
                   icon: "",
-                  frontmatter: { key: "React" }
+                  frontmatter: {
+                    key: "React"
+                  }
                 }
               ]
+            },{
+              text:'Css',
+              icon:'',
+              frontmatter:{
+                key:'Css'
+              },
+              items:[{
+                text:'LESS',
+                icon:'',
+                frontmatter:{
+                  key:'less'
+                }
+              }]
             }
           ]
         }
@@ -111,13 +172,16 @@ module.exports = {
       // 联系我设置内容
       contact: {
         enabled: true,
-        items: [
-          {
+        items: [{
             text: "QQ",
             link: "http://wpa.qq.com/msgrd?v=3&uin=1454900516&site=qq&menu=yes",
             icon: "iconqq"
           },
-          { text: "GitHub", link: "https://github.com/IKangXu", icon: "icongithub" }
+          {
+            text: "GitHub",
+            link: "https://github.com/weiei",
+            icon: "icongithub"
+          }
         ]
       }
     },
@@ -139,14 +203,13 @@ module.exports = {
     sponsor: ["/alipay.jpg", "/Tenpay.png"],
     footer: {
       icp: {
-        val: "苏ICP备19025415号",
-        link: "http://beian.miit.gov.cn/"
+        val: "暂无",
+        link: "......"
       }, // ICP备案
       startYear: "2019", // 开始日期
       psr: {
-        val: "",//"苏公网安备 XXXXX号",
-        link:
-          "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=XXXXX&token=62a24040-710d-473b-89b8-26de6e91d20b"
+        val: "", //"苏公网安备 XXXXX号",
+        link: "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=XXXXX&token=62a24040-710d-473b-89b8-26de6e91d20b"
       } // 公安备案
     }
   },

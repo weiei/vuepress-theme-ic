@@ -196,22 +196,23 @@ export default {
     left .3rem
     margin auto
     color lighten($textColor, 25%)
-    line-height 2.1rem
+    line-height 1.7rem
     font-size .5rem
   input
     cursor text
     width calc(160px - 3rem)
-    height: 2rem
+    height: 1.5rem
     color lighten($textColor, 25%)
     display inline-block
     border 1px solid darken($borderColor, 10%)
     font-size 0.9rem
-    line-height 2rem
+    line-height 1.5rem
     outline none
     transition all .2s ease
     background #fff
     background-size 1rem
     padding 0 .5rem 0 1.5rem
+    border-radius 2px
     &:focus
       cursor auto
       border-color $accentColor

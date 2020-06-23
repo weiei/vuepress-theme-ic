@@ -148,5 +148,5 @@ export default {
 </script>
 <style lang="stylus">
 .note-nav-container1
-  border-top 1px solid #000
+  // border-top 1px solid #000
 </style>

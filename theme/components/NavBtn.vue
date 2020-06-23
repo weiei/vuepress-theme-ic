@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-btn">
+  <div class="nav-btn" title="全屏">
     <i class="item-icon iconfont icondaohang" @click="show()"></i>
   </div>
 </template>
@@ -63,4 +63,5 @@ export default {
         padding .5rem
         font-size 1.7rem
         cursor pointer
+        border-radius 3px
 </style>

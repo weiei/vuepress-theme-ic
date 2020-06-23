@@ -5,10 +5,10 @@
         v-for="(nav, index) in navs"
         :class="[index === navs.length - 1 ? 'clear-last-right-border' : '']"
       >
-        <RouterLink :to="nav.link" v-if="!nav.blank" @click.native="navClick">{{
+        <RouterLink  :to="nav.link" v-if="!nav.blank" @click.native="navClick">{{
           nav.text
         }}</RouterLink>
-        <a v-else :href="nav.link" target="_blank" rel="noopener noreferrer">
+        <a v-else :href="nav.link" target="_blank" rel="noopener noreferrer" >
           {{ nav.text }}
         </a>
       </div>
@@ -50,11 +50,13 @@ export default {
        display flex
        div
         flex 1
-        border-top 1px dashed #ffffff
-        border-right 1px dashed #ffffff
+        // border-top 1px dashed #ffffff
+        // border-right 1px dashed #ffffff
         overflow hidden
         text-overflow ellipsis
         white-space nowrap
+        
         &.clear-last-right-border
             border-right 0
+            
 </style>

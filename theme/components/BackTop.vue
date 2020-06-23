@@ -15,6 +15,7 @@ export default {
     methods: {
         backTop() {
             document.getElementsByClassName(this.parentCls)[0].scrollTop = 0;
+            
         }
     }
 }

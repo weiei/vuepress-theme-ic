@@ -8,20 +8,15 @@
         :alt="$siteTitle"
       />
       <br />
-      <span v-if="$site.themeConfig.author" class="author-name">{{
+      <span v-if="$site.themeConfig.author" class="author-name">
+        {{
         $site.themeConfig.author
-      }}</span>
+        }}
+      </span>
     </RouterLink>
     <div v-if="contact.enabled" class="contact">
-      <a
-        v-for="(item, index) in contact.items"
-        :href="item.link"
-        target="_blank"
-      >
-        <i
-          v-if="item.icon"
-          :class="[{ 'item-icon iconfont': item.icon }, item.icon]"
-        ></i>
+      <a v-for="(item, index) in contact.items" :href="item.link" target="_blank">
+        <i v-if="item.icon" :class="[{ 'item-icon iconfont': item.icon }, item.icon]"></i>
         <!-- {{ item.text }} -->
       </a>
     </div>
@@ -97,7 +92,7 @@ export default {
       let childCount = 0;
       items.forEach((item, index, arr) => {
         // item.count = 0; // 默认设置为0
-        
+
         if (item.hasOwnProperty("items")) {
           // 属于组  只有item.frontmatter.id起用作用
           // let count = 0;
@@ -118,7 +113,11 @@ export default {
           // 不属于组 item.frontmatter.key起作用，如果item.frontmatter.key是undefined，则忽视
           let vector =
             _this["$" + (frontmatterId ? frontmatterId : item.frontmatter.id)];
-          item.count = vector ? (vector.map[item.frontmatter.key] ? vector.map[item.frontmatter.key].pages.length : 0) : 0;
+          item.count = vector
+            ? vector.map[item.frontmatter.key]
+              ? vector.map[item.frontmatter.key].pages.length
+              : 0
+            : 0;
           item.frontmatter.id = frontmatterId
             ? frontmatterId
             : item.frontmatter.id;
@@ -126,24 +125,27 @@ export default {
         }
       });
     },
-    recursiveCalc(item, frontmatterId ) {
-        let count = 0;
-        let _this = this;
-        if (item.hasOwnProperty("items")) {
-          item.items.forEach((im, index, arr) => {
-            let fmId = item.frontmatter.id;
-            if (!fmId) {
-              fmId = frontmatterId;
-            }
-            count += _this.recursiveCalc(im, fmId);
-          })
-          
-        } else {
-          let vector =
-            _this["$" + (frontmatterId ? frontmatterId : item.frontmatter.id)];
-          count = vector ? (vector.map[item.frontmatter.key] ? vector.map[item.frontmatter.key].pages.length : 0) : 0;
-        }
-        return count;
+    recursiveCalc(item, frontmatterId) {
+      let count = 0;
+      let _this = this;
+      if (item.hasOwnProperty("items")) {
+        item.items.forEach((im, index, arr) => {
+          let fmId = item.frontmatter.id;
+          if (!fmId) {
+            fmId = frontmatterId;
+          }
+          count += _this.recursiveCalc(im, fmId);
+        });
+      } else {
+        let vector =
+          _this["$" + (frontmatterId ? frontmatterId : item.frontmatter.id)];
+        count = vector
+          ? vector.map[item.frontmatter.key]
+            ? vector.map[item.frontmatter.key].pages.length
+            : 0
+          : 0;
+      }
+      return count;
     },
     homeClick() {
       // 清空数据
@@ -155,111 +157,169 @@ export default {
 </script>
 <style src="../styles/note.styl" lang="stylus"></style>
 <style lang="stylus">
-.head_hide
-  display none !important
-.head_1200
-    position fixed !important
-    left 0
-    top 0
-    z-index 11 !important
-.head
-    width 160px
-    height 100%
-    margin 0
-    float left
-    color #ffffff
-    background-color #000000
-    text-align center
-    position relative
-    z-index 2
-    box-shadow 2px 0 6px rgba(0,21,41,.35)
-    a
-      color #ffffff
-    .logo
-        height $navbarHeight
-        min-width $navbarHeight
-        vertical-align top
-        border-radius 3.6rem
-        margin-top 1rem
-        margin-bottom .5rem
-    .author-name,.logo
-        cursor pointer
-    .contact
-        padding .5rem
-        line-height 2rem
-        .item-icon
-            width 5px
-            height 5px
-            padding .1rem
-    .note-nav
-      text-align left
-      cursor pointer
-      height 70%
-      overflow auto
-      margin-top .5rem
-      ul
-        padding 0
-        // padding-left .5rem
-      >ul.note-nav-ul
-        padding 0
-        > div
-          // > li
-          //   border-bottom 1px solid #ffffff
-          .item
-            position relative
-            line-height 2rem
-            > a
-              margin-left .5rem
-              display inline-block
-              width calc(100% - .5rem)
-              height 100%
-            .nav-child
-              display none
-            .nav-child.show
-              display block
-              // animation: unfold_top 0.3s ease-in-out;
-          .item-group
-            ul
-              background-color: #3A3D49
-              a
-                font-size .85rem
-            .nav-down
-                width 0
-                height 0
-                border-left 1rem solid transparent
-                border-right 1rem solid transparent
-                border-top 1rem solid #0066cc
-                overflow hidden
-                cursor pointer
-                transition all .2s
-                -webkit-transition all .2s
-                position absolute
-                top .8rem
-                right .5rem
-                border-width 5px
-                border-top-color rgba(255, 255, 255, .7)
-            .nav-down-transform
-                  transform: rotate(180deg);
-          .item-singleton
-            &:hover
-              background-color #f2f2f2
-              background-size 100% 1rem
-              a
-                color #000000
-        li
-          // padding-left 0.5rem
-          ul
-            // background-color #3A3D49
-            // margin-left -.5rem
+.head_hide {
+  display: none !important;
+}
+
+.head_1200 {
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  z-index: 11 !important;
+}
+
+.head {
+  width: 200px;
+  height: 100%;
+  margin: 0;
+  float: left;
+  color: #ffffff;
+  background-color: #000000;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  font-size:12px;
+
+  a {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .logo {
+    height: $navbarHeight;
+    min-width: $navbarHeight;
+    vertical-align: top;
+    border-radius: 3.6rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .author-name, .logo {
+    cursor: pointer;
+  }
+
+  .contact {
+    padding: 0.5rem;
+    line-height: 2rem;
+
+    .item-icon {
+      width: 5px;
+      height: 5px;
+      padding: 0.1rem;
+    }
+  }
+
+  .note-nav {
+    text-align: left;
+    cursor: pointer;
+    height: 70%;
+    overflow: auto;
+    margin-top: 0.5rem;
+
+    ul {
+      padding: 0;
+      // padding-left .5rem
+    }
+
+    >ul.note-nav-ul {
+      padding: 0;
+
+      > div {
+        // > li
+        // border-bottom 1px solid #ffffff
+        .item {
+          position: relative;
+          line-height: 2rem;
+
+          > a {
+            margin-left: 0.5rem;
+            display: inline-block;
+            // width: calc(100% - 0.5rem);
+            height: 100%;
+          }
+
+          .nav-child {
+            display: none;
+          }
+
+          .nav-child.show {
+            display: block;
+            padding-left: 1rem;
+            list-style: none;
+            // animation: unfold_top 0.3s ease-in-out;
+          }
+        }
+
+        .item-group {
+          ul {
+            background-color: #3A3D49;
+
+            a {
+              font-size: 0.85rem;
+            }
+          }
+
+          .nav-down {
+            width: 0;
+            height: 0;
+            border-left: 1rem solid transparent;
+            border-right: 1rem solid transparent;
+            border-top: 1rem solid #0066cc;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+            position: absolute;
+            top: 0.8rem;
+            right: 0.5rem;
+            border-width: 5px;
+            border-top-color: rgba(255, 255, 255, 0.7);
+          }
+
+          .nav-down-transform {
+            transform: rotate(180deg);
+          }
+        }
+
+        .item-singleton {
+          &:hover {
+            // background-color: #f2f2f2;
+            // background-size: 100% 1rem;
+
+            a {
+              color: #fff;
+              transform:translateX(1rem);
+              transition: all 0.2s;
+            }
+            a:before{
+              content:" √ ";
+              
+            }
+          }
+        }
+      }
+
+      li {
+        // padding-left 0.5rem
+        ul {
+          // background-color #3A3D49
+          // margin-left -.5rem
+        }
+      }
+    }
+  }
+}
+
 @keyframes unfold_top {
-    0% {
-        transform-origin: top;
-        height: 0;
-        transform: perspective(100px) rotateX(0deg);
-    }
-    100% {
-        transform: perspective(100px) rotateX(0deg);
-        height: 80px;
-    }
+  0% {
+    transform-origin: top;
+    height: 0;
+    transform: perspective(100px) rotateX(0deg);
+  }
+
+  100% {
+    transform: perspective(100px) rotateX(0deg);
+    height: 80px;
+  }
 }
 </style>

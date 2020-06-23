@@ -1,5 +1,5 @@
 <template>
-  <div class="note-sidebar" v-if="open">
+  <div class="note-sidebar" v-if="open" title="目录">
     <!-- 触发条件 -->
     <i class="item-icon iconfont iconcaidan" @click="showSidebar"></i>
     <!-- 目录 -->
